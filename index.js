@@ -1,12 +1,19 @@
-import express from 'express'
+import express, { response } from 'express'
 
 const app = express();
 const PORT = 3000;
 
+//Public folder on path public
+app.use(express.static('public'));
 
-app.get('/', (req, res) =>
-    res.send(`a get request with / route on port ${PORT}`)
+//Images folder on path images
+app.use('/images', express.static('images'));
+
+app.get('/',(req, res)=>
+    // get data 
+    response.json()
 )
+
 
 app.post('/newItem', (req, res) =>
     res.send(`a post request with / route on port ${PORT}`)
